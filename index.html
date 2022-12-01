@@ -14,7 +14,7 @@
   </style>
 </head>
 <body>
-  <video></video>
+  <video muted="true" playsinline="true"></video>
   <script>
     eruda.init();
 
@@ -28,7 +28,6 @@
     (async()=>{
       let mediaStream = await navigator.mediaDevices.getUserMedia({video: true});
       video.srcObject = mediaStream;
-      video.play();
       video.onloadedmetadata = async()=>{ 
         video.onloadedmetadata = null;
         await video.play();
