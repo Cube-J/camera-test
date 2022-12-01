@@ -6,15 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="./eruda.js"></script>
+  <style>
+    video {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
 </head>
 <body>
+  <video></video>
   <script>
     eruda.init();
+
+    const video = document.querySelector("video");
 
     console.log(navigator.mediaDevices);
     console.log(navigator.mediaDevices.getUserMedia);
     console.log(navigator);
     console.log(navigator.getUserMedia);
+
+    (async()=>{
+      let mediaStream = await navigator.mediaDevices.getUserMedia({video: true});
+      video.srcObject = mediaStream;
+      video.play();
+      video.onloadedmetadata = async()=>{ 
+        video.onloadedmetadata = null;
+        await video.play();
+      };
+    })();
   </script>
 </body>
 </html>
