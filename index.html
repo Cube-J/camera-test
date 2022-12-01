@@ -31,6 +31,7 @@
       video.onloadedmetadata = async()=>{ 
         video.onloadedmetadata = null;
         await video.play();
+        console.log(video.readyState);
       };
     })();
   </script>
