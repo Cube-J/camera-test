@@ -28,9 +28,9 @@
     (async()=>{
       let mediaStream = await navigator.mediaDevices.getUserMedia({video: true});
       video.srcObject = mediaStream;
-      video.onloadedmetadata = async()=>{ 
+      video.onloadeddata = async()=>{ 
         console.log("loadedmetadata fired.");
-        video.onloadedmetadata = null;
+        video.onloadeddata = null;
         await video.play();
         console.log("video.readyState: ");
         console.log(video.readyState);
